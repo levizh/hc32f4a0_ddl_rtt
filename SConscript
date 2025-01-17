@@ -4,6 +4,9 @@ from building import *
 # get current directory
 cwd = GetCurrentDir()
 
+PACKAGES_PATH = cwd
+Export('PACKAGES_PATH')
+
 # The set of source files associated with this SConscript file.
 
 src = Split('''
