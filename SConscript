@@ -116,4 +116,14 @@ CPPDEFINES = ['USE_DDL_DRIVER']
 
 group = DefineGroup('Libraries', src, depend = [''], CPPPATH = path, CPPDEFINES = CPPDEFINES)
 
+start_src = []
+if rtconfig.PLATFORM in ['gcc']:
+    start_src += [cwd + '/cmsis/Device/HDSC/hc32f4xx/Source/GCC/startup_hc32f4a0.S']
+elif rtconfig.PLATFORM in ['armcc', 'armclang']:
+    start_src += [cwd + '/cmsis/Device/HDSC/hc32f4xx/Source/ARM/startup_hc32f4a0.s']
+elif rtconfig.PLATFORM in ['iccarm']:
+    start_src += [cwd + '/cmsis/Device/HDSC/hc32f4xx/Source/IAR/startup_hc32f4a0.s']
+
+group += DefineGroup('Drivers', start_src, depend = [''], CPPPATH = path)
+
 Return('group')
