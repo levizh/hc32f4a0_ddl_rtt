@@ -4,6 +4,7 @@ from building import *
 # get current directory
 cwd = GetCurrentDir()
 
+# export the packages directory
 PACKAGES_PATH = cwd
 Export('PACKAGES_PATH')
 
